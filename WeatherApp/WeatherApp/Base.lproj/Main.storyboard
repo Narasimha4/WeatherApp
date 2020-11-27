@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZMq-Ve-4HS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZMq-Ve-4HS">
                                 <rect key="frame" x="21" y="75" width="336" height="592"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -27,7 +27,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="336" height="353"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG_Square_2" translatesAutoresizingMaskIntoConstraints="NO" id="VMz-de-gic">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="London" translatesAutoresizingMaskIntoConstraints="NO" id="VMz-de-gic">
                                                     <rect key="frame" x="0.0" y="0.0" width="336" height="335"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YII-Sk-gvd">
@@ -121,6 +121,11 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cityImageView" destination="VMz-de-gic" id="dP4-kW-hTc"/>
+                                            <outlet property="cityLabel" destination="VP4-EE-maR" id="3Yw-ZW-wf8"/>
+                                            <outlet property="humidityLabel" destination="BX1-1v-CpJ" id="pYh-UB-ERC"/>
+                                            <outlet property="sunriseLabel" destination="sD6-QS-6BS" id="Gfm-7g-Nsf"/>
+                                            <outlet property="sunsetLabel" destination="K0S-Ef-gQ6" id="Vxe-Lb-YmP"/>
+                                            <outlet property="temperatureLabel" destination="sc3-0p-ZZM" id="YV4-Lu-cay"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -136,7 +141,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="addButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lT2-hX-Hpq"/>
+                                    <segue destination="ttF-rW-QVp" kind="presentation" identifier="AddCityName" id="aUp-UP-Fgv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -159,8 +164,74 @@
             </objects>
             <point key="canvasLocation" x="-191.19999999999999" y="137.18140929535232"/>
         </scene>
+        <!--Add City View Controller-->
+        <scene sceneID="g6h-Mj-jq2">
+            <objects>
+                <viewController id="ttF-rW-QVp" customClass="AddCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5ij-ma-HvA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fa-u5-Jc3">
+                                <rect key="frame" x="20" y="44" width="32" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="bjK-0R-rUn"/>
+                                    <constraint firstAttribute="width" constant="32" id="h3C-7q-JFO"/>
+                                </constraints>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="ttF-rW-QVp" eventType="touchUpInside" id="ukB-TY-4Ks"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter City Name" textAlignment="center" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-AW-aQ9" userLabel="City Name Text Field">
+                                <rect key="frame" x="73.5" y="150" width="228" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="228" id="I4J-cP-dHg"/>
+                                    <constraint firstAttribute="height" constant="34" id="s5G-Tt-Khh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dW0-jD-oKf" userLabel="Get Weather Button">
+                                <rect key="frame" x="80.5" y="219" width="214" height="41"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="214" id="alk-Z4-Z0f"/>
+                                    <constraint firstAttribute="height" constant="41" id="nq2-UQ-jWY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Get Weather">
+                                    <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="getWeatherButtonTapped:" destination="ttF-rW-QVp" eventType="touchUpInside" id="ODa-Nx-jTe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8fa-u5-Jc3" firstAttribute="top" secondItem="6ji-gh-B82" secondAttribute="top" constant="44" id="3gA-QJ-4fr"/>
+                            <constraint firstItem="EQw-AW-aQ9" firstAttribute="centerX" secondItem="6ji-gh-B82" secondAttribute="centerX" id="KZT-0K-ZQ3"/>
+                            <constraint firstItem="8fa-u5-Jc3" firstAttribute="leading" secondItem="6ji-gh-B82" secondAttribute="leading" constant="20" id="edI-eQ-m6X"/>
+                            <constraint firstItem="dW0-jD-oKf" firstAttribute="top" secondItem="EQw-AW-aQ9" secondAttribute="bottom" constant="35" id="p6v-qx-vC8"/>
+                            <constraint firstItem="EQw-AW-aQ9" firstAttribute="top" secondItem="8fa-u5-Jc3" secondAttribute="bottom" constant="72" id="pXv-rm-hxM"/>
+                            <constraint firstItem="dW0-jD-oKf" firstAttribute="centerX" secondItem="6ji-gh-B82" secondAttribute="centerX" id="w6Z-u8-n7B"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6ji-gh-B82"/>
+                    </view>
+                    <connections>
+                        <outlet property="cityTextField" destination="EQw-AW-aQ9" id="TAr-OS-Wv5"/>
+                        <outlet property="getWeatherButton" destination="dW0-jD-oKf" id="p4l-lA-xtq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QVn-NN-v7u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="477.60000000000002" y="137.18140929535232"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="BG_Square_2" width="336" height="336"/>
+        <image name="London" width="336" height="336"/>
+        <image name="back" width="100" height="100"/>
     </resources>
 </document>
