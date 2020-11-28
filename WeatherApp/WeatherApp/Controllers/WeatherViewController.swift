@@ -15,6 +15,18 @@ class WeatherViewController: UIViewController {
     var weatherViewModel: WeatherViewModel!
     var weatherInfo: WeatherModel?
     
+    lazy var loadingIdicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.hidesWhenStopped = true
+        self.view.addSubview(indicator)
+        NSLayoutConstraint.activate([
+            indicator.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            ])
+        return indicator
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,8 +38,10 @@ class WeatherViewController: UIViewController {
     
     func callVMForUIUpdate() {
         weatherViewModel = WeatherViewModel()
-        weatherViewModel.bindVMToVC = {
+        loadingIdicator.startAnimating()
+        weatherViewModel.bindVMToVC = { 
             self.weatherInfo = self.weatherViewModel.weatherData
+            self.loadingIdicator.stopAnimating()
             self.weatherTableView.reloadData()
         }
     }
@@ -54,27 +68,9 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "\(WeatherTableViewCell.self)", for: indexPath) as? WeatherTableViewCell {
             if let weatherCity = weatherInfo?.list?[indexPath.row] {
-                
-                
-                DispatchQueue.main.async {
-                    
-                    let temparature = Temperature(country: (weatherCity.sys?.country!)!, openWeatherMapDegrees: (weatherCity.main?.temp!)!)
-                    cell.temperatureLabel.text = temparature.degrees
-                    cell.humidityLabel.text = "\(weatherCity.main?.humidity! ?? 0)%"
-                    cell.cityLabel.text = weatherCity.name
-                    
-                    cell.sunriseLabel.text = DateHelper.getTimeFromUnixTimeStamp(timeStamp: (weatherCity.sys?.sunrise)!, timeZone: (weatherCity.sys?.timezone)!)
-                    cell.sunsetLabel.text = DateHelper.getTimeFromUnixTimeStamp(timeStamp: (weatherCity.sys?.sunset)!, timeZone: (weatherCity.sys?.timezone)!)
-                    
-                    if weatherCity.name == Cities.London.rawValue || weatherCity.name == Cities.Paris.rawValue {
-                        cell.cityImageView.image = UIImage.init(named: weatherCity.name ?? "")
-                    } else {
-                        cell.cityImageView.image = UIImage.init(named: "Default")
-                    }
-                }
+                cell.weatherConfigurable(weatherCity: weatherCity)
                 return cell
             }
-            
         }
         return UITableViewCell()
     }
@@ -83,10 +79,12 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
 extension WeatherViewController: AddCityDelegate {
     func userAddedCity(name: String) {
         if !name.trimmingCharacters(in: .whitespaces).isEmpty {
+            loadingIdicator.startAnimating()
             if weatherViewModel.addNewCity(name: name) == nil {
                 DispatchQueue.main.async {
                     self.alert(message: "Error in getting weather!", title: "WeatherApp")
                 }
+                loadingIdicator.stopAnimating()
             }
         }
     }

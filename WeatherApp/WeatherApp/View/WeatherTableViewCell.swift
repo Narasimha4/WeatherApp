@@ -23,7 +23,22 @@ class WeatherTableViewCell: UITableViewCell {
         
         cityImageView.layer.cornerRadius = 17.0
         
-
+    }
+    
+    func weatherConfigurable(weatherCity: List) {
+        
+        let temparature = Temperature(country: (weatherCity.sys?.country!)!, openWeatherMapDegrees: (weatherCity.main?.temp!)!)
+        let sunriseTime = DateHelper.getTimeFromUnixTimeStamp(timeStamp: (weatherCity.sys?.sunrise)!, timeZone: (weatherCity.sys?.timezone)!)
+        let sunsetTime = DateHelper.getTimeFromUnixTimeStamp(timeStamp: (weatherCity.sys?.sunset)!, timeZone: (weatherCity.sys?.timezone)!)
+        
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = temparature.degrees
+            self.humidityLabel.text = "\(weatherCity.main?.humidity! ?? 0)%"
+            self.cityLabel.text = weatherCity.name
+            self.sunriseLabel.text = sunriseTime
+            self.sunsetLabel.text = sunsetTime
+            self.cityImageView.image = UIImage.init(named: weatherCity.name == Cities.London.rawValue || weatherCity.name == Cities.Paris.rawValue ? weatherCity.name ?? "" :  "Default")
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

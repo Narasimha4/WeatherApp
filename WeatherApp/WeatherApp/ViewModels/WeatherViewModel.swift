@@ -44,10 +44,12 @@ class WeatherViewModel: NSObject {
     }
     
     func addNewCity(name: String) -> [Int]? {
-        guard let newCity = getCityIdByCityName(name: name) else {
+        guard let newCity = getCityIdByCityName(name: name.capitalized) else {
             return nil
         }
-        citiIdArray.insert(newCity, at: 0)
+        if !citiIdArray.contains(newCity) {
+            citiIdArray.insert(newCity, at: 0)
+        }
         getWeatherData()
         
         return citiIdArray
