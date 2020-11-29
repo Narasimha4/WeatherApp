@@ -20,7 +20,12 @@ class WeatherTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        cityImageView.layer.cornerRadius = 17.0
+        initialSetup()
+    }
+    
+    func initialSetup() {
+        cityImageView.layer.addLayer()
+        cityImageView.layer.cornerRadius = 17
     }
     
     func weatherConfigurable(weatherCity: List) {
@@ -47,7 +52,6 @@ class WeatherTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

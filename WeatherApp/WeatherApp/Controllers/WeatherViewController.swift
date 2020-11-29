@@ -55,7 +55,7 @@ class WeatherViewController: UIViewController {
         let remoteHostStatus = networkReachability?.connection
         switch remoteHostStatus {
         case .cellular, .wifi:
-            callVMForUIUpdate()
+            callViewModelForUIUpdate()
         default:
             guard ReachabilityManager.shared.isConnectedToNetwork() else {
                 self.loadingIndicator.stopAnimating()
@@ -65,7 +65,7 @@ class WeatherViewController: UIViewController {
         }
     }
     
-    func callVMForUIUpdate() {
+    func callViewModelForUIUpdate() {
         loadingIndicator.startAnimating()
         weatherViewModel.bindVMToVC = { (weatherData, error) in
             if let error = error  {
