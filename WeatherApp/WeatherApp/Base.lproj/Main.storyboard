@@ -183,7 +183,7 @@
                                     <action selector="backButtonTapped:" destination="ttF-rW-QVp" eventType="touchUpInside" id="ukB-TY-4Ks"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter City Name" textAlignment="center" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-AW-aQ9" userLabel="City Name Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter City Name" textAlignment="center" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="EQw-AW-aQ9" userLabel="City Name Text Field">
                                 <rect key="frame" x="73.5" y="150" width="228" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="228" id="I4J-cP-dHg"/>

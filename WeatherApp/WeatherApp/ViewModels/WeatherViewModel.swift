@@ -16,16 +16,13 @@ enum Cities: Int {
 
 class WeatherViewModel: NSObject {
     
-    private var apiService: APIService!
-    private(set) var weatherData: WeatherModel! {
-        didSet {
-            self.bindVMToVC()
-        }
-    }
+    lazy var apiService: APIService = {
+        return APIService()
+    }()
     
     private var citiIdArray = [Int]()
     private var cityData: [CityListModel]?
-    var bindVMToVC: (() -> ()) = {}
+    var bindVMToVC: ((WeatherModel?, Error?) -> Void)?
     
     override init() {
         super.init()
@@ -39,15 +36,15 @@ class WeatherViewModel: NSObject {
         
         getWeatherData()
     }
-
-     // MARK: - Add new city at top of the list
+    
+    // MARK: - Add new city at top of the list
     func addNewCity(name: String) -> [Int]? {
         guard let newCity = getCityIdByCityName(name: name.capitalized) else {
             return nil
         }
         if !citiIdArray.contains(newCity) {
             citiIdArray.insert(newCity, at: 0)
-           UserDefaults.standard.set(citiIdArray, forKey: WeatherConstants.userDefaults.updatedCitiesKey)
+            UserDefaults.standard.set(citiIdArray, forKey: WeatherConstants.userDefaults.updatedCitiesKey)
         }
         getWeatherData()
         
@@ -56,10 +53,10 @@ class WeatherViewModel: NSObject {
     
     // MARK: - API call to get weather data
     func getWeatherData() {
-        apiService = APIService()
+        
         if let updatedCities = UserDefaults.standard.value(forKey: WeatherConstants.userDefaults.updatedCitiesKey) as? [Int] {
-            apiService.makeNetworkCall(parameter: [WeatherConstants.API.idParameterKey : updatedCities], completion: { [weak self] (weatherData) in
-                self?.weatherData = weatherData
+            apiService.getWeatherAPI(parameter: [WeatherConstants.API.idParameterKey : updatedCities], completion: { [weak self] (weatherData, error)  in
+                self?.bindVMToVC?(weatherData, error)
             })
         }
     }

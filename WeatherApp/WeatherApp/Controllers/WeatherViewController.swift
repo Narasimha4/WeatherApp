@@ -16,12 +16,12 @@ class WeatherViewController: UIViewController {
         return WeatherViewModel()
     }()
     
-    lazy var loadingIdicator: UIActivityIndicatorView = {
+    lazy var loadingIndicator: UIActivityIndicatorView = {
         var indicator: UIActivityIndicatorView!
-        if #available(iOS 13.0, *) {
+        if  #available(iOS 13.0, *) {
             indicator = UIActivityIndicatorView(style: .large)
         } else {
-            indicator = UIActivityIndicatorView(style: .gray)
+            indicator = UIActivityIndicatorView(style: .medium)
         }
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.hidesWhenStopped = true
@@ -50,7 +50,7 @@ class WeatherViewController: UIViewController {
         )
         
         do {
-            loadingIdicator.startAnimating()
+            loadingIndicator.startAnimating()
             try reachability?.startNotifier()
         } catch {
             print("Unable to start notifier")
@@ -65,7 +65,7 @@ class WeatherViewController: UIViewController {
             callVMForUIUpdate()
         default:
             guard ReachabilityManager.shared.isConnectedToNetwork() else {
-                self.loadingIdicator.stopAnimating()
+                self.loadingIndicator.stopAnimating()
                 self.alert(message: WeatherConstants.Texts.internetConnectionMessage, title: WeatherConstants.Texts.appTitle)
                 return
             }
@@ -73,12 +73,17 @@ class WeatherViewController: UIViewController {
     }
     
     func callVMForUIUpdate() {
-        loadingIdicator.startAnimating()
-        
-        weatherViewModel.bindVMToVC = {
-            self.weatherInfo = self.weatherViewModel.weatherData
-            self.loadingIdicator.stopAnimating()
-            self.weatherTableView.reloadData()
+        loadingIndicator.startAnimating()
+        weatherViewModel.bindVMToVC = { (weatherData, error) in
+            if let error = error  {
+                self.alert(message: error.localizedDescription, title: WeatherConstants.Texts.appTitle)
+                return
+            }
+            self.weatherInfo = weatherData
+            self.loadingIndicator.stopAnimating()
+            DispatchQueue.main.async {
+                self.weatherTableView.reloadData()
+            }
         }
     }
     
@@ -114,13 +119,11 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension WeatherViewController: AddCityDelegate {
     func userAddedCity(name: String) {
-        loadingIdicator.startAnimating()
+        loadingIndicator.startAnimating()
         let trimmedName = name.trimmingCharacters(in: .whitespaces)
         if weatherViewModel.addNewCity(name: trimmedName) == nil {
-            DispatchQueue.main.async {
-                self.alert(message: WeatherConstants.Texts.unableToGetWeatherMessage, title: WeatherConstants.Texts.appTitle)
-            }
-            loadingIdicator.stopAnimating()
+            self.alert(message: WeatherConstants.Texts.unableToGetWeatherMessage, title: WeatherConstants.Texts.appTitle)
+            loadingIndicator.stopAnimating()
         }
     }
 }

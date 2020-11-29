@@ -13,7 +13,7 @@ struct WeatherConstants {
     static let appIdKey = "3fc7eb54f2da81b1fa92df9d7951a11d"
     
     struct API {
-        static let urlString = "http://api.openweathermap.org/data/2.5/group?"
+        static let urlString = "http://api.openweathermap.org/data/2.5/group"
         static let idParameterKey = "id"
         static let appIdParameterKey = "appid"
         static let httpMethodGetType = "GET"

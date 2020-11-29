@@ -10,7 +10,7 @@ import Foundation
 
 class APIService: NSObject {
         
-    func makeNetworkCall(parameter: [String : [Int]], completion: @escaping (WeatherModel) -> ()) {
+    func getWeatherAPI(parameter: [String : [Int]], completion: @escaping (WeatherModel?, Error?) -> ()) {
         
         let urlComp = NSURLComponents(string: WeatherConstants.API.urlString)
         var items = [URLQueryItem]()
@@ -35,19 +35,19 @@ class APIService: NSObject {
                 do {
                     let responseModel =  try JSONDecoder().decode(WeatherModel.self, from: data!)
                     DispatchQueue.main.async {
-                        completion(responseModel)
+                        completion(responseModel, nil)
                     }
                 }
                 catch {
                     DispatchQueue.main.async {
-                        //self.showError()
+                        completion(nil, error)
                     }
                 }
             }
             else if error != nil
             {
                 DispatchQueue.main.async {
-                    //self.showError()
+                    completion(nil, error)
                 }
             }
         })
