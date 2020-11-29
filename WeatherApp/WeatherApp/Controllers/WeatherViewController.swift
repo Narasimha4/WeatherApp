@@ -36,21 +36,14 @@ class WeatherViewController: UIViewController {
     var weatherInfo: WeatherModel?
     var reachability: Reachability?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         reachability = Reachability()
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(networkStatusChanged(_:)),
-            name: .reachabilityChanged,
-            object: reachability
-        )
+        NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged(_:)), name: .reachabilityChanged, object: reachability)
         
         do {
-            loadingIndicator.startAnimating()
             try reachability?.startNotifier()
         } catch {
             print("Unable to start notifier")
@@ -76,6 +69,7 @@ class WeatherViewController: UIViewController {
         loadingIndicator.startAnimating()
         weatherViewModel.bindVMToVC = { (weatherData, error) in
             if let error = error  {
+                self.loadingIndicator.stopAnimating()
                 self.alert(message: error.localizedDescription, title: WeatherConstants.Texts.appTitle)
                 return
             }
