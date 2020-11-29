@@ -11,6 +11,10 @@
 		F9596904257120A3008EB91A /* JsonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9596903257120A3008EB91A /* JsonHelper.swift */; };
 		F9596906257121B7008EB91A /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9596905257121B7008EB91A /* DateHelper.swift */; };
 		F959690F25712D62008EB91A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F959690E25712D62008EB91A /* UIViewController+Extension.swift */; };
+		F959691325722D63008EB91A /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F959691125722D63008EB91A /* Reachability.swift */; };
+		F959691425722D63008EB91A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F959691225722D63008EB91A /* ReachabilityManager.swift */; };
+		F959691625724C17008EB91A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F959691525724C17008EB91A /* UIButton+Extension.swift */; };
+		F95969182572AD76008EB91A /* WeatherConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95969172572AD76008EB91A /* WeatherConstants.swift */; };
 		F96FEAA8256BEE4100B2C342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96FEAA7256BEE4100B2C342 /* AppDelegate.swift */; };
 		F96FEAAA256BEE4100B2C342 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96FEAA9256BEE4100B2C342 /* SceneDelegate.swift */; };
 		F96FEAAC256BEE4100B2C342 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96FEAAB256BEE4100B2C342 /* WeatherViewController.swift */; };
@@ -58,6 +62,10 @@
 		F9596903257120A3008EB91A /* JsonHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonHelper.swift; sourceTree = "<group>"; };
 		F9596905257121B7008EB91A /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		F959690E25712D62008EB91A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		F959691125722D63008EB91A /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		F959691225722D63008EB91A /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		F959691525724C17008EB91A /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		F95969172572AD76008EB91A /* WeatherConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConstants.swift; sourceTree = "<group>"; };
 		F96FEAA4256BEE4100B2C342 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96FEAA7256BEE4100B2C342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F96FEAA9256BEE4100B2C342 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,8 +134,18 @@
 			isa = PBXGroup;
 			children = (
 				F959690E25712D62008EB91A /* UIViewController+Extension.swift */,
+				F959691525724C17008EB91A /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F959691025722CD5008EB91A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F959691125722D63008EB91A /* Reachability.swift */,
+				F959691225722D63008EB91A /* ReachabilityManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		F96FEA9B256BEE4100B2C342 = {
@@ -154,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				F959690D25712D4A008EB91A /* Extensions */,
+				F959691025722CD5008EB91A /* Network */,
 				F96FEB0D2570DB5300B2C342 /* Helpers */,
 				F96FEAD7256BF97600B2C342 /* WebService */,
 				F96FEADB256BFA7B00B2C342 /* Models */,
@@ -225,6 +244,7 @@
 			children = (
 				F96FEAA7256BEE4100B2C342 /* AppDelegate.swift */,
 				F96FEAA9256BEE4100B2C342 /* SceneDelegate.swift */,
+				F95969172572AD76008EB91A /* WeatherConstants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -393,13 +413,16 @@
 				F96FEAF92570014C00B2C342 /* CityListModel.swift in Sources */,
 				F96FEAAC256BEE4100B2C342 /* WeatherViewController.swift in Sources */,
 				F96FEB062570C6FF00B2C342 /* Weather.swift in Sources */,
+				F95969182572AD76008EB91A /* WeatherConstants.swift in Sources */,
 				F96FEB0C2570C6FF00B2C342 /* List.swift in Sources */,
+				F959691625724C17008EB91A /* UIButton+Extension.swift in Sources */,
 				F9596906257121B7008EB91A /* DateHelper.swift in Sources */,
 				F96FEB082570C6FF00B2C342 /* Main.swift in Sources */,
 				F9596904257120A3008EB91A /* JsonHelper.swift in Sources */,
 				F96FEB0A2570C6FF00B2C342 /* Sys.swift in Sources */,
 				F9596902257107A1008EB91A /* AddCityViewController.swift in Sources */,
 				F96FEB052570C6FF00B2C342 /* WeatherModel.swift in Sources */,
+				F959691425722D63008EB91A /* ReachabilityManager.swift in Sources */,
 				F96FEAA8256BEE4100B2C342 /* AppDelegate.swift in Sources */,
 				F96FEAD9256BF9A600B2C342 /* APIService.swift in Sources */,
 				F96FEAAA256BEE4100B2C342 /* SceneDelegate.swift in Sources */,
@@ -407,6 +430,7 @@
 				F96FEAF6256FEFE600B2C342 /* WeatherViewModel.swift in Sources */,
 				F96FEB072570C6FF00B2C342 /* Clouds.swift in Sources */,
 				F96FEB0B2570C6FF00B2C342 /* Coord.swift in Sources */,
+				F959691325722D63008EB91A /* Reachability.swift in Sources */,
 				F959690F25712D62008EB91A /* UIViewController+Extension.swift in Sources */,
 				F96FEAEF256FDEBD00B2C342 /* TemperatureConverter.swift in Sources */,
 				F96FEAF1256FDFDC00B2C342 /* Temperature.swift in Sources */,

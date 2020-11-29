@@ -9,24 +9,24 @@
 import Foundation
 
 class APIService: NSObject {
-    
-    let WEATHER_API = "http://api.openweathermap.org/data/2.5/group?"
-    let APP_ID = "3fc7eb54f2da81b1fa92df9d7951a11d"
-    
+        
     func makeNetworkCall(parameter: [String : [Int]], completion: @escaping (WeatherModel) -> ()) {
         
-        let urlComp = NSURLComponents(string: WEATHER_API)!
+        let urlComp = NSURLComponents(string: WeatherConstants.API.urlString)
         var items = [URLQueryItem]()
         for (key,value) in parameter {
             items.append(URLQueryItem(name: key, value: (value.map {String($0)}).joined(separator: ",")))
         }
         items = items.filter{!$0.name.isEmpty}
         if !items.isEmpty {
-            items.append(URLQueryItem(name: "appid", value: APP_ID))
-            urlComp.queryItems = items
+            items.append(URLQueryItem(name: WeatherConstants.API.appIdParameterKey, value: WeatherConstants.appIdKey))
+            urlComp?.queryItems = items
         }
-        var urlRequest = URLRequest(url: urlComp.url!)
-        urlRequest.httpMethod = "GET"
+        
+        guard let url = urlComp?.url else { return }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = WeatherConstants.API.httpMethodGetType
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in

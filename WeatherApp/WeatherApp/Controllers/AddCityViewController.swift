@@ -21,27 +21,22 @@ class AddCityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        drawShadow(getWeatherButton)
-    }
-    
-    func drawShadow(_ button: UIButton) {
-        button.layer.shadowOpacity = 0.7
-        button.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
+        getWeatherButton.drawShadow()
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
-        
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func getWeatherButtonTapped(_ sender: Any) {
         
         guard let textField = cityTextField.text, !textField.isEmpty else {
-            self.alert(message: "Please enter the city name", title: "WeatherApp")
+            self.alert(message: WeatherConstants.Texts.cityNameRequiredMessage, title: WeatherConstants.Texts.appTitle)
+            return
+        }
+        
+        guard ReachabilityManager.shared.isConnectedToNetwork() else {
+            self.alert(message: WeatherConstants.Texts.internetConnectionMessage, title: WeatherConstants.Texts.appTitle)
             return
         }
         

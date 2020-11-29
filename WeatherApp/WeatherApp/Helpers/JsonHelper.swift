@@ -10,7 +10,7 @@ import UIKit
 
 class JsonHelper {
     static func loadJson(fileName: String) -> [CityListModel]? {
-        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
+        if let url = Bundle.main.url(forResource: fileName, withExtension: WeatherConstants.Texts.jsonFileType) {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()

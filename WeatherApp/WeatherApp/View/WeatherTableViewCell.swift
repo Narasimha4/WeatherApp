@@ -19,25 +19,29 @@ class WeatherTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         cityImageView.layer.cornerRadius = 17.0
-        
     }
     
     func weatherConfigurable(weatherCity: List) {
         
-        let temparature = Temperature(country: (weatherCity.sys?.country!)!, openWeatherMapDegrees: (weatherCity.main?.temp!)!)
-        let sunriseTime = DateHelper.getTimeFromUnixTimeStamp(timeStamp: (weatherCity.sys?.sunrise)!, timeZone: (weatherCity.sys?.timezone)!)
-        let sunsetTime = DateHelper.getTimeFromUnixTimeStamp(timeStamp: (weatherCity.sys?.sunset)!, timeZone: (weatherCity.sys?.timezone)!)
-        
         DispatchQueue.main.async {
-            self.temperatureLabel.text = temparature.degrees
-            self.humidityLabel.text = "\(weatherCity.main?.humidity! ?? 0)%"
+            self.humidityLabel.text = "\(weatherCity.main?.humidity ?? 0)%"
             self.cityLabel.text = weatherCity.name
-            self.sunriseLabel.text = sunriseTime
-            self.sunsetLabel.text = sunsetTime
-            self.cityImageView.image = UIImage.init(named: weatherCity.name == Cities.London.rawValue || weatherCity.name == Cities.Paris.rawValue ? weatherCity.name ?? "" :  "Default")
+            self.cityImageView.image = UIImage.init(named: weatherCity.name == Cities.London.rawValue || weatherCity.name == Cities.Paris.rawValue ? weatherCity.name ?? "" : WeatherConstants.Texts.defaultImageNmae)
+            
+            if let county = weatherCity.sys?.country, let temp = weatherCity.main?.temp {
+                let temparature = Temperature(country: county, openWeatherMapDegrees: temp)
+                self.temperatureLabel.text = temparature.degrees
+            }
+            
+            if let sunriseTime = weatherCity.sys?.sunrise, let timeZone = weatherCity.sys?.timezone {
+                self.sunriseLabel.text = DateHelper.getTimeFromUnixTimeStamp(timeStamp: sunriseTime, timeZone: timeZone)
+            }
+            
+            if let sunsetTime = weatherCity.sys?.sunset, let timeZone = weatherCity.sys?.timezone {
+                self.sunsetLabel.text = DateHelper.getTimeFromUnixTimeStamp(timeStamp: sunsetTime, timeZone: timeZone)
+            }
         }
     }
 
