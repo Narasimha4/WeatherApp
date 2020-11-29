@@ -15,6 +15,8 @@
 		F959691425722D63008EB91A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F959691225722D63008EB91A /* ReachabilityManager.swift */; };
 		F959691625724C17008EB91A /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F959691525724C17008EB91A /* UIButton+Extension.swift */; };
 		F95969182572AD76008EB91A /* WeatherConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95969172572AD76008EB91A /* WeatherConstants.swift */; };
+		F959691A2573E254008EB91A /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95969192573E254008EB91A /* CALayer+Extension.swift */; };
+		F959691C2573ECAA008EB91A /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F959691B2573ECAA008EB91A /* UIImage+Extension.swift */; };
 		F96FEAA8256BEE4100B2C342 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96FEAA7256BEE4100B2C342 /* AppDelegate.swift */; };
 		F96FEAAA256BEE4100B2C342 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96FEAA9256BEE4100B2C342 /* SceneDelegate.swift */; };
 		F96FEAAC256BEE4100B2C342 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96FEAAB256BEE4100B2C342 /* WeatherViewController.swift */; };
@@ -66,6 +68,8 @@
 		F959691225722D63008EB91A /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		F959691525724C17008EB91A /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		F95969172572AD76008EB91A /* WeatherConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherConstants.swift; sourceTree = "<group>"; };
+		F95969192573E254008EB91A /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		F959691B2573ECAA008EB91A /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		F96FEAA4256BEE4100B2C342 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96FEAA7256BEE4100B2C342 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F96FEAA9256BEE4100B2C342 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 			children = (
 				F959690E25712D62008EB91A /* UIViewController+Extension.swift */,
 				F959691525724C17008EB91A /* UIButton+Extension.swift */,
+				F95969192573E254008EB91A /* CALayer+Extension.swift */,
+				F959691B2573ECAA008EB91A /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -430,10 +436,12 @@
 				F96FEAF6256FEFE600B2C342 /* WeatherViewModel.swift in Sources */,
 				F96FEB072570C6FF00B2C342 /* Clouds.swift in Sources */,
 				F96FEB0B2570C6FF00B2C342 /* Coord.swift in Sources */,
+				F959691C2573ECAA008EB91A /* UIImage+Extension.swift in Sources */,
 				F959691325722D63008EB91A /* Reachability.swift in Sources */,
 				F959690F25712D62008EB91A /* UIViewController+Extension.swift in Sources */,
 				F96FEAEF256FDEBD00B2C342 /* TemperatureConverter.swift in Sources */,
 				F96FEAF1256FDFDC00B2C342 /* Temperature.swift in Sources */,
+				F959691A2573E254008EB91A /* CALayer+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,7 +615,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7GZQ5ZFDG2;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -624,7 +634,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7GZQ5ZFDG2;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
