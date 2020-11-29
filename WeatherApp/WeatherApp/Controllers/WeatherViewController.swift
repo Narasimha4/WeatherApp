@@ -12,12 +12,17 @@ class WeatherViewController: UIViewController {
     
     @IBOutlet weak var weatherTableView: UITableView!
     
-    var weatherViewModel: WeatherViewModel?
-    var weatherInfo: WeatherModel?
-    var reachability: Reachability?
+    lazy var weatherViewModel: WeatherViewModel = {
+        return WeatherViewModel()
+    }()
     
     lazy var loadingIdicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
+        var indicator: UIActivityIndicatorView!
+        if #available(iOS 13.0, *) {
+            indicator = UIActivityIndicatorView(style: .large)
+        } else {
+            indicator = UIActivityIndicatorView(style: .gray)
+        }
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.hidesWhenStopped = true
         self.view.addSubview(indicator)
@@ -28,10 +33,13 @@ class WeatherViewController: UIViewController {
         return indicator
     }()
     
+    var weatherInfo: WeatherModel?
+    var reachability: Reachability?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        weatherViewModel = WeatherViewModel()
         reachability = Reachability()
         
         NotificationCenter.default.addObserver(
@@ -67,8 +75,8 @@ class WeatherViewController: UIViewController {
     func callVMForUIUpdate() {
         loadingIdicator.startAnimating()
         
-        weatherViewModel?.bindVMToVC = {
-            self.weatherInfo = self.weatherViewModel?.weatherData
+        weatherViewModel.bindVMToVC = {
+            self.weatherInfo = self.weatherViewModel.weatherData
             self.loadingIdicator.stopAnimating()
             self.weatherTableView.reloadData()
         }
@@ -106,14 +114,13 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension WeatherViewController: AddCityDelegate {
     func userAddedCity(name: String) {
-        if !name.trimmingCharacters(in: .whitespaces).isEmpty {
-            loadingIdicator.startAnimating()
-            if weatherViewModel?.addNewCity(name: name) == nil {
-                DispatchQueue.main.async {
-                    self.alert(message: WeatherConstants.Texts.unableToGetWeatherMessage, title: WeatherConstants.Texts.appTitle)
-                }
-                loadingIdicator.stopAnimating()
+        loadingIdicator.startAnimating()
+        let trimmedName = name.trimmingCharacters(in: .whitespaces)
+        if weatherViewModel.addNewCity(name: trimmedName) == nil {
+            DispatchQueue.main.async {
+                self.alert(message: WeatherConstants.Texts.unableToGetWeatherMessage, title: WeatherConstants.Texts.appTitle)
             }
+            loadingIdicator.stopAnimating()
         }
     }
 }

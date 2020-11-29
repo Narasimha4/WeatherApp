@@ -9,9 +9,9 @@
 import UIKit
 
 // MARK: - Default cities to load
-enum Cities: String {
-    case London
-    case Paris
+enum Cities: Int {
+    case London = 2643743
+    case Paris = 2968815
 }
 
 class WeatherViewModel: NSObject {
@@ -32,13 +32,9 @@ class WeatherViewModel: NSObject {
         
         cityData = JsonHelper.loadJson(fileName: WeatherConstants.Texts.jsonFileNmae)
         
-        guard let london = getCityIdByCityName(name: Cities.London.rawValue),
-            let paris = getCityIdByCityName(name: Cities.Paris.rawValue) else {
-                return
-        }
+        citiIdArray.append(Cities.London.rawValue)
+        citiIdArray.append(Cities.Paris.rawValue)
         
-        citiIdArray.append(london)
-        citiIdArray.append(paris)
         UserDefaults.standard.set(citiIdArray, forKey: WeatherConstants.userDefaults.updatedCitiesKey)
         
         getWeatherData()

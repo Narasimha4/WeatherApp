@@ -27,8 +27,8 @@ struct WeatherConstants {
         static let defaultImageNmae = "Default"
         static let jsonFileNmae = "city.list"
         static let appTitle = "WeatherApp"
-        static let internetConnectionMessage = "An internet connection is required.\n Please try again after a connection is established."
-        static let unableToGetWeatherMessage = "Error in getting weather."
+        static let internetConnectionMessage = "An internet connection is required.\n Please try again after a connection is established"
+        static let unableToGetWeatherMessage = "Error in getting weather"
         static let cityNameRequiredMessage = "Please enter the city name"
         static let usCountryText = "US"
     }
