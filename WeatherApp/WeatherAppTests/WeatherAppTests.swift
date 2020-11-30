@@ -10,24 +10,30 @@ import XCTest
 @testable import WeatherApp
 
 class WeatherAppTests: XCTestCase {
-    
-    var service: APIService!
+        
+    // View model object creation
     var viewModel = WeatherViewModel()
     
+    var service: APIService!
     var sessionUnderTest : URLSession!
     var url: URL?
     
     override func setUp() {
         super.setUp()
         
+        // setting default session configuration
         sessionUnderTest = URLSession(configuration : URLSessionConfiguration.default)
+        
+        // setting url string directy with query parameters
         url = URL(string: "http://api.openweathermap.org/data/2.5/group?id=524901&appid=3fc7eb54f2da81b1fa92df9d7951a11d")
     }
     
     
-    // Slow failure Async test : RENT
+    //MARK: Slow failure Async test
+    // API success test case
     func testAPISuccessStatus200(){
         
+        // status code 200
         let promise = expectation(description: "Status code : 200")
         
         sessionUnderTest.dataTask(with: url!) { (data, response, error) in
@@ -45,6 +51,7 @@ class WeatherAppTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
+     //MARK: Get city id from city name test
     func testGetCityIdFromName() {
         let cityId = viewModel.getCityIdByCityName(name: "London")
         XCTAssertEqual(cityId, 123, "Couldn't match id")

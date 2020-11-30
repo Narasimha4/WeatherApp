@@ -10,8 +10,10 @@ import UIKit
 
 struct WeatherConstants {
     
+    // Open Weather APPID
     static let appIdKey = "3fc7eb54f2da81b1fa92df9d7951a11d"
     
+    // API related constants
     struct API {
         static let urlString = "http://api.openweathermap.org/data/2.5/group"
         static let idParameterKey = "id"
@@ -20,6 +22,7 @@ struct WeatherConstants {
         
     }
     
+    // App related constants
     struct Texts {
         static let okButtonText = "OK"
         static let jsonFileType = "json"
@@ -33,6 +36,7 @@ struct WeatherConstants {
         static let usCountryText = "US"
     }
     
+    // UserDefault keys
     struct userDefaults {
         static let updatedCitiesKey = "updatedCities"
     }

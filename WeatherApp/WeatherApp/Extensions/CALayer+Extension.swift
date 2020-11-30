@@ -9,6 +9,8 @@
 import UIKit
 
 extension CALayer {
+    
+    // MARK: - Add Layer to UIControls
     func addLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [

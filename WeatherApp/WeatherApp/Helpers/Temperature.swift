@@ -12,10 +12,12 @@ struct Temperature {
     let degrees: String
     
     init(country: String, openWeatherMapDegrees: Double) {
+        
+        // Based US country return the temperature degree as Celsius / Fareheit
         if country == WeatherConstants.Texts.usCountryText {
-            degrees = String(TemperatureConverter.kelvinToFahrenheit(openWeatherMapDegrees)) + "°"
+            degrees = String(TemperatureConverter.kelvinToFahrenheit(openWeatherMapDegrees)) + "°" // °F
         } else {
-            degrees = String(TemperatureConverter.kelvinToCelsius(openWeatherMapDegrees)) + "°"
+            degrees = String(TemperatureConverter.kelvinToCelsius(openWeatherMapDegrees)) + "°" // °C
         }
     }
 }

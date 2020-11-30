@@ -9,6 +9,8 @@
 import UIKit
 
 extension UIViewController {
+    
+    // MARK: - Generic alert for VC extension
     func alert(message: String, title: String ) {
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -17,4 +19,5 @@ extension UIViewController {
             self.present(alertController, animated: true, completion: nil)
         }
     }
+    
 }

@@ -6,8 +6,11 @@
 //  Copyright © 2020 Narasimha. All rights reserved.
 //
 
+// This class will help us to set image for specific device.
+
 import UIKit
 
+// MARK: - List of basic devices
 public enum DeviceSpecific {
     case iPhone
     case iPhoneRetina
@@ -20,7 +23,8 @@ public enum DeviceSpecific {
 }
 
 public extension UIImage {
-
+    
+    // MARK: - Device Model based on size
     private class func currentDeviceSpecific() -> DeviceSpecific {
         
         let h = Float(UIScreen.main.bounds.size.height)
@@ -43,6 +47,7 @@ public extension UIImage {
         }
     }
     
+    // MARK: - Add suffix to image name
     private class func suffixForDevice() -> String {
         switch currentDeviceSpecific() {
             case .iPhone:
@@ -62,6 +67,7 @@ public extension UIImage {
         }
     }
     
+    // MARK: - Setting image for specitic device
     class func imageForSpecificDevice(imageName: String) -> UIImage? {
         var result: UIImage? = nil
         let nameWithSuffix = imageName+UIImage.suffixForDevice()
@@ -71,4 +77,5 @@ public extension UIImage {
         }
         return result
     }
+    
 }

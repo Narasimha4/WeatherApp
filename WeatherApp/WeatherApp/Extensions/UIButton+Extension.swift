@@ -9,6 +9,8 @@
 import UIKit
 
 extension UIButton {
+    
+    // MARK: - Add shadow to button
     func drawShadow() {
         self.layer.shadowOpacity = 0.7
         self.layer.shadowOffset = CGSize(width: 5.0, height: 5.0)
@@ -16,4 +18,5 @@ extension UIButton {
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.white.cgColor
     }
+    
 }
