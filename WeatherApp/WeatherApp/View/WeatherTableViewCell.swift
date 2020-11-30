@@ -44,7 +44,7 @@ class WeatherTableViewCell: UITableViewCell {
             
             // setting up the image name for iPhone and iPad devices
             // Based on default cities set the image eg: city name - London, ImageName - London
-            // If we are adding new city set the default image, whic h in stored in the assets
+            // If we are adding new city set the default image, which is stored in the assets
             self.cityImageView.image = UIImage.imageForSpecificDevice(imageName: weatherCity.name == "\(Cities.London)" || weatherCity.name == "\(Cities.Paris)" ? weatherCity.name ?? "" : WeatherConstants.Texts.defaultImageNmae)
             
             // setting up the temparate
