@@ -50,15 +50,13 @@ public extension UIImage {
             case .iPhoneRetina:
                 return "@2x"
             case .iPhone5:
-                return "-568h@2x"
+                return "@2x"
             case .iPhone6:
-                return "-667h@2x"
+                return "@2x"
             case .iPhone6Plus:
-                return "-736h@3x"
-            case .iPad:
-                return "~ipad"
-            case .iPadRetina:
-                return "~ipad@2x"
+                return "@3x"
+            case .iPad, .iPadRetina:
+                return "~Ipad"
             case .Unknown:
                 return ""
         }

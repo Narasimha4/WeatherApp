@@ -33,7 +33,7 @@ class WeatherTableViewCell: UITableViewCell {
         DispatchQueue.main.async {
             self.humidityLabel.text = "\(weatherCity.main?.humidity ?? 0)%"
             self.cityLabel.text = weatherCity.name
-            self.cityImageView.image = UIImage.init(named: weatherCity.name == "\(Cities.London)" || weatherCity.name == "\(Cities.Paris)" ? weatherCity.name ?? "" : WeatherConstants.Texts.defaultImageNmae)
+            self.cityImageView.image = UIImage.imageForSpecificDevice(imageName: weatherCity.name == "\(Cities.London)" || weatherCity.name == "\(Cities.Paris)" ? weatherCity.name ?? "" : WeatherConstants.Texts.defaultImageNmae)
             
             if let county = weatherCity.sys?.country, let temp = weatherCity.main?.temp {
                 let temparature = Temperature(country: county, openWeatherMapDegrees: temp)
