@@ -38,11 +38,6 @@ class WeatherViewModel: NSObject {
         // Load the open weather local json to get city IDs
         cityData = JsonHelper.loadJson(fileName: WeatherConstants.Texts.jsonFileNmae)
         
-        // Keeping the default cities
-        citiIdArray.append(Cities.London.rawValue)
-        citiIdArray.append(Cities.Paris.rawValue)
-        UserDefaults.standard.set(citiIdArray, forKey: WeatherConstants.userDefaults.updatedCitiesKey)
-        
         // get weather API call
         getWeatherData()
     }
@@ -50,16 +45,25 @@ class WeatherViewModel: NSObject {
     // MARK: - Add new city at top of the list
     func addNewCity(name: String) -> [Int]? {
         guard let newCity = getCityIdByCityName(name: name.capitalized) else {
-           // Returing nil, if city name not matched in the json
+            // Returing nil, if city name not matched in the json
             return nil
         }
+        
+        // Temporarily storing the data in user defaults
+        if let updatedCities = UserDefaults.standard.value(forKey: WeatherConstants.userDefaults.updatedCitiesKey) as? [Int] {
+            citiIdArray = updatedCities
+        }
+        
         if !citiIdArray.contains(newCity) {
             // Inserting added city on top of to list
             citiIdArray.insert(newCity, at: 0)
             
             // storing the added city in the User Defaults
             UserDefaults.standard.set(citiIdArray, forKey: WeatherConstants.userDefaults.updatedCitiesKey)
+        } else {
+            return nil
         }
+        
         getWeatherData()
         
         return citiIdArray
@@ -68,7 +72,16 @@ class WeatherViewModel: NSObject {
     // MARK: - API call to get weather data
     func getWeatherData() {
         
+        // Saving cities in user defaults as of now, need to create core data / realm / firebase
         // Retrieving the cities from UserDefaults
+        if  UserDefaults.standard.value(forKey: WeatherConstants.userDefaults.updatedCitiesKey) as? [Int] == nil {
+            
+            // Keeping the default cities
+            citiIdArray.append(Cities.London.rawValue)
+            citiIdArray.append(Cities.Paris.rawValue)
+            UserDefaults.standard.set(citiIdArray, forKey: WeatherConstants.userDefaults.updatedCitiesKey)
+        }
+        
         if let updatedCities = UserDefaults.standard.value(forKey: WeatherConstants.userDefaults.updatedCitiesKey) as? [Int] {
             apiService.getWeatherAPI(parameter: [WeatherConstants.API.idParameterKey : updatedCities], completion: { [weak self] (weatherData, error)  in
                 // Passing the weather model and error to view controller
