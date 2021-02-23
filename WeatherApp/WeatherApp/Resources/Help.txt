@@ -1,0 +1,8 @@
+<div class="middle_container">  <div class="container">  <div class="nobox">
+<br><b><center>Weather App Help Center</center></b>
+<br><br><b>How To Use</b>
+<br><br>•    In Home screen you can see all the bookmarks, by default Paris and London would present, you can add the locations by tapping on Add button
+<br><br>•    In Add screen you can type the location and tap on Get Weather
+<br><br>•    Help screen will give you the basic flow of App
+<br><br>•    Settings screen and 5 days weather screen InProgress...
+ <div class="clearfix"></div>      </div>  </div></div>

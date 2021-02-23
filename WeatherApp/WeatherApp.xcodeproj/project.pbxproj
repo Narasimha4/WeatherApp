@@ -40,6 +40,8 @@
 		F96FEB0A2570C6FF00B2C342 /* Sys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96FEB022570C6FF00B2C342 /* Sys.swift */; };
 		F96FEB0B2570C6FF00B2C342 /* Coord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96FEB032570C6FF00B2C342 /* Coord.swift */; };
 		F96FEB0C2570C6FF00B2C342 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96FEB042570C6FF00B2C342 /* List.swift */; };
+		F9B0861225E4C4D9005A1D55 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B0861125E4C4D9005A1D55 /* WebViewController.swift */; };
+		F9B0861425E4C507005A1D55 /* Help.txt in Resources */ = {isa = PBXBuildFile; fileRef = F9B0861325E4C507005A1D55 /* Help.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		F96FEB022570C6FF00B2C342 /* Sys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sys.swift; sourceTree = "<group>"; };
 		F96FEB032570C6FF00B2C342 /* Coord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coord.swift; sourceTree = "<group>"; };
 		F96FEB042570C6FF00B2C342 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		F9B0861125E4C4D9005A1D55 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		F9B0861325E4C507005A1D55 /* Help.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Help.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +264,7 @@
 			children = (
 				F96FEAAB256BEE4100B2C342 /* WeatherViewController.swift */,
 				F9596901257107A1008EB91A /* AddCityViewController.swift */,
+				F9B0861125E4C4D9005A1D55 /* WebViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 		F96FEAF2256FE9C300B2C342 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F9B0861325E4C507005A1D55 /* Help.txt */,
 				F96FEAF3256FEA2500B2C342 /* city.list.json */,
 			);
 			path = Resources;
@@ -387,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9B0861425E4C507005A1D55 /* Help.txt in Resources */,
 				F96FEAB4256BEE4400B2C342 /* LaunchScreen.storyboard in Resources */,
 				F96FEAF4256FEA2500B2C342 /* city.list.json in Resources */,
 				F96FEAB1256BEE4400B2C342 /* Assets.xcassets in Resources */,
@@ -426,6 +433,7 @@
 				F96FEB082570C6FF00B2C342 /* Main.swift in Sources */,
 				F9596904257120A3008EB91A /* JsonHelper.swift in Sources */,
 				F96FEB0A2570C6FF00B2C342 /* Sys.swift in Sources */,
+				F9B0861225E4C4D9005A1D55 /* WebViewController.swift in Sources */,
 				F9596902257107A1008EB91A /* AddCityViewController.swift in Sources */,
 				F96FEB052570C6FF00B2C342 /* WeatherModel.swift in Sources */,
 				F959691425722D63008EB91A /* ReachabilityManager.swift in Sources */,
