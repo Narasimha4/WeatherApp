@@ -17,26 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch" translatesAutoresizingMaskIntoConstraints="NO" id="zI7-n9-LPz">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LqZ-m2-pkf">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeatherApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4g2-LE-nQ6">
-                                <rect key="frame" x="79.5" y="40" width="216.5" height="45"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Launch"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeatherApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHj-Od-XoI">
+                                <rect key="frame" x="79.5" y="35" width="216.5" height="45"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="37"/>
-                                <color key="textColor" red="0.50196081400000003" green="0.77647060160000003" blue="0.74117648599999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zI7-n9-LPz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BxL-hJ-32l"/>
-                            <constraint firstItem="4g2-LE-nQ6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Uof-g3-PyC"/>
-                            <constraint firstItem="zI7-n9-LPz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VcN-yd-1ph"/>
-                            <constraint firstItem="4g2-LE-nQ6" firstAttribute="centerX" secondItem="zI7-n9-LPz" secondAttribute="centerX" id="vjg-U6-gMM"/>
-                            <constraint firstItem="zI7-n9-LPz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wjk-Pb-XcS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zI7-n9-LPz" secondAttribute="bottom" id="ygp-3P-gD7"/>
+                            <constraint firstItem="LqZ-m2-pkf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3Wm-KE-9Ny"/>
+                            <constraint firstItem="LqZ-m2-pkf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="63n-DJ-nGF"/>
+                            <constraint firstItem="fHj-Od-XoI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="CdK-4l-76N"/>
+                            <constraint firstItem="LqZ-m2-pkf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="XY7-E1-lET"/>
+                            <constraint firstItem="LqZ-m2-pkf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rT0-Sl-ya8"/>
+                            <constraint firstItem="fHj-Od-XoI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tdH-YV-AU9"/>
                         </constraints>
                     </view>
                 </viewController>
