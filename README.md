@@ -22,6 +22,12 @@ What I have done:
 •	Handled errors appropriately, added network status observers to get the network status (online/offline) based on the status, handled the app data.
 •	Add functionality implemented, recently added city is displaying on top of the list (Index 0).
 
+![Simulator Screenshot - iPhone 15 Pro - 2024-08-19 at 17 43 37](https://github.com/user-attachments/assets/796b5c7a-f472-4f41-a9dd-73cd9a5cb3e4)
+![Simulator Screenshot - iPhone 15 Pro - 2024-08-19 at 17 43 40](https://github.com/user-attachments/assets/108bf493-3176-44b7-9464-8b68d6f022c3)
+![Simulator Screenshot - iPhone 15 Pro - 2024-08-19 at 17 43 58](https://github.com/user-attachments/assets/9cd5aaed-86d1-4cca-8720-a7b8ee59a8e9)
+![Simulator Screenshot - iPhone 15 Pro - 2024-08-19 at 17 44 04](https://github.com/user-attachments/assets/2f24738b-03f8-4258-ac4d-86ced3922d39)
+
+
 Approach I have followed
 
 In Open weather API, to get the city weather details we have the following call
