@@ -51,10 +51,22 @@ class WeatherAppTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-     //MARK: Get city id from city name test
-    func testGetCityIdFromName() {
+     //MARK: Get city id from city name not match test
+    func testGetCityIdNotFromName() {
         let cityId = viewModel.getCityIdByCityName(name: "London")
         XCTAssertEqual(cityId, 123, "Couldn't match id")
+    }
+    
+    //MARK: Get city id from city name match test
+    func testGetCityIdMatchFromName() {
+        let cityId = viewModel.getCityIdByCityName(name: "London")
+        XCTAssertEqual(cityId, 2643743, "ID Matched")
+    }
+    
+    //MARK: Add city name test
+    func testAddCityName() {
+        let cityIds = viewModel.addNewCity(name: "Hyderabad")
+        XCTAssertEqual(cityIds, [0])
     }
     
     override func tearDown() {
